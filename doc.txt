@@ -1,0 +1,15 @@
+# How to run on google dataproc
+
+1. Create a Dataproc cluster
+    - Under advanced options do the following
+        - press "Add initialization action" and add gs://dataproc-initialization-actions/python/pip-install.sh
+        - press "Add metadata" and add key=PIP_PACKAGES value=scipy numpy
+
+2. Once the cluster is deployed, check that you can reach it via
+    
+    gcloud dataproc clusters list
+
+3. Submit jobs with the following command. Replace FILE.py with the python file, and CLUSTENAME with your cluster
+
+    gcloud dataproc jobs submit pyspark FILE.py --cluster=CLUSTERNAME --files=someMatrix.mtx
+     
