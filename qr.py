@@ -6,7 +6,7 @@ import numpy as np
 import time
 
 if __name__ == "__main__":
-    sc = SparkContext(appName="PythonSVDExample")
+    sc = SparkContext(appName="PythonQRExample")
 
     M = scipy.io.mmread('someMatrix.mtx')
     rows = M.row.tolist()
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     mat = RowMatrix(rows)
 
-    # Compute the top 5 singular values and corresponding singular vectors.
+    # Compute the QR decomposition.
     start = time.time()
     qr = mat.tallSkinnyQR()
     end = time.time()
